@@ -1,0 +1,10 @@
+
+{% for IP in IPS -%}
+{{IP}}:
+    hostname: {{IP}}
+    platform: 'ios'
+    username: ******
+    password: ******
+    groups:
+        - cisco_group
+{% endfor -%}
