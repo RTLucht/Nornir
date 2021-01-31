@@ -36,6 +36,7 @@ def main() -> None:
     result = nr.run(task=get_facts)
     print_result(result)
 
+    nr = InitNornir(config_file="Z:\Scripts\Python2\config.yaml")
     result1 = nr.run(netmiko_send_command, command_string="write me")
     print_result(result1)
 
