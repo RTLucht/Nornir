@@ -1,4 +1,7 @@
 # Nornir
+
+My main reason for getting into automation is to keep my changes consistent and free of errors as possible.  For the last couple of years I have been working on a large Cisco ISE deployment.  My before python time I would create a lot of the templates for the switch interfaces manually, talk about hours and hours of work and a few times I would miss something and I would get a lot of errors on the input of the new configuration.  I am done with those days.
+
 My nornir scripts that I am playing with, I found ntc-templates to be very helpful with scripting out what I wanted to do.
 
 https://pypi.org/project/ntc-templates/
