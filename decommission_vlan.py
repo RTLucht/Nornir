@@ -3,7 +3,7 @@ from nornir_netmiko import netmiko_send_command
 from nornir_utils.plugins.functions import print_result
 from nornir_netmiko import netmiko_send_config
 
-vlan = input('Vlan ID ')
+vlan = input('Vlan ID You Would like to remove ')
 
 config_commands = ['no vlan ' + vlan]
 
@@ -23,7 +23,8 @@ def get_facts(task, vlan):
         trunk_commands = ['interface ' + task.host['facts'][x]['interface'], 'switchport trunk allowed vlan remove ' +vlan]
         if "access" in task.host['facts'][x]['admin_mode'] and vlan in task.host['facts'][x]['access_vlan']:
             access_config = task.run(netmiko_send_config, config_commands = access_commands)
-        elif "trunk" in task.host['facts'][x]['admin_mode'] and vlan in task.host['facts'][x]['trunking_vlans'][0].split(','):
+        #looking for trunk ports that are not members of a port channel and have the vlan in the allowed list I am looking to remove    
+        elif "trunk" in task.host['facts'][x]['admin_mode'] and not "member of bundle" in task.host['facts'][x]['mode'] and vlan in task.host['facts'][x]['trunking_vlans'][0].split(','):
             trunk_config = task.run(netmiko_send_config, config_commands = trunk_commands)
 
 
