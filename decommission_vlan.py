@@ -3,7 +3,7 @@ from nornir_netmiko import netmiko_send_command
 from nornir_utils.plugins.functions import print_result
 from nornir_netmiko import netmiko_send_config
 
-vlan = input('Vlan ID You Would like to remove ')
+vlan = input('Vlan ID You Would like to remove: ')
 
 config_commands = ['no vlan ' + vlan]
 
