@@ -14,7 +14,9 @@ def get_facts(task, vlan):
     # save the result of the Show Command under the dict key "facts" so we can access the structered results for parsing
     task.host["facts"] = r.result
     
-    for x in range(0,100):
+    l = len(r.result)
+
+    for x in range(0,l):
         
         
         # define the commands to be sent when if Access interface
