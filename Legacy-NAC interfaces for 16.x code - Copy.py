@@ -9,8 +9,9 @@ def get_facts(task):
     r = task.run(netmiko_send_command, command_string="show interface switchport", use_textfsm=True)
     # This creates a dictionary 
     task.host["facts"] = r.result
-    
-    for x in range(0,100):
+    l = len(r.result)
+
+    for x in range(0,l):
         # define the commands to be sent when if Access interface, I used this for inspiration https://www.youtube.com/watch?v=Nvgcvsg6BTM
         access_commands = ['interface ' + task.host['facts'][x]['interface'], 'authentication event server dead action authorize vlan ' +
                 task.host['facts'][x]['access_vlan'],
