@@ -11,9 +11,10 @@ def get_facts(task):
     r = task.run(netmiko_send_command, command_string="show interface switchport", use_textfsm=True)
     # save the result of the Show Command under the dict key "facts" so we can access the structered results for parsing
     task.host["facts"] = r.result
-    
-    for x in range(0,100):
-        print(x)
+    l = len(r.result)
+
+    for x in range(0,l):
+        
         # define the commands to be sent when if Access interface
         access_commands = ['interface ' + task.host['facts'][x]['interface'], 'switchport voice vlan 1994']
         # define the commands to be sent when if Trunk interface
