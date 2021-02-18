@@ -2,8 +2,5 @@
 
 192.168.254.252:
     hostname: 192.168.254.252
-    platform: 'ios'
-    username: '******'
-    password: '******'
     groups:
         - cisco_group
