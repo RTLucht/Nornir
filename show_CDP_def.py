@@ -7,14 +7,13 @@ import os
 
 nr = InitNornir(config_file="H:/Scripts/TEXTFSM/config.yaml")
 
-IP = task.host.hostname
 name = input('Enter the filename: ')
 def get_facts(task):
     r = task.run(netmiko_send_command, delay_factor=4, command_string="show run all | inc cdp run")
     task.host["cdp"] = r.result
     r = task.run(netmiko_send_command, delay_factor=4, command_string="show run | inc default-gateway")
     task.host["gateway"] = r.result.split(' ')
-    r = task.run(netmiko_send_command, delay_factor=4, command_string="sh run | inc ip address " + IP)
+    r = task.run(netmiko_send_command, delay_factor=4, command_string="sh run | inc ip address " + task.host.hostname)
     task.host["mgmt"] = r.result.split(' ')
     r = task.run(netmiko_send_command, delay_factor=4, command_string="show version", use_textfsm=True)
     task.host["version"] = r.result
