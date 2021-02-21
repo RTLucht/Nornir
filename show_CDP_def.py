@@ -7,7 +7,7 @@ import os
 
 nr = InitNornir(config_file="H:/Scripts/TEXTFSM/config.yaml")
 
-IP = input('Enter first 3 Oct of management IP: ')
+IP = task.host.hostname
 name = input('Enter the filename: ')
 def get_facts(task):
     r = task.run(netmiko_send_command, delay_factor=4, command_string="show run all | inc cdp run")
